@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VitalityFlow - Programs</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lexend:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#124af0",
+                        "on-tertiary-container": "#ebf1ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#004784",
+                        "secondary-fixed": "#d7e2ff",
+                        "on-secondary-fixed-variant": "#394761",
+                        "inverse-primary": "#b8c3ff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#0d569a",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#434656",
+                        "on-surface": "#191c1e",
+                        "on-background": "#191c1e",
+                        "tertiary-container": "#346fb4",
+                        "primary": "#0040e0",
+                        "on-primary-fixed-variant": "#0035be",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#53617d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c5d9",
+                        "secondary-container": "#cfddfd",
+                        "background": "#f7f9fb",
+                        "on-primary-container": "#efefff",
+                        "secondary": "#515f7a",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001356",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b9c7e6",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#0d1b33",
+                        "outline": "#747688",
+                        "tertiary-fixed": "#d4e3ff",
+                        "tertiary-fixed-dim": "#a4c8ff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#001c39",
+                        "primary-container": "#2e5bff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "xl": "32px",
+                        "2xl": "48px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "lg": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Lexend"],
+                        "headline-lg": ["Lexend"],
+                        "headline-md": ["Lexend"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Lexend"]
+                    },
+                    fontSize: {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col pt-16 pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 max-w-7xl mx-auto">
+<div class="flex items-center justify-center w-10 h-10 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up, high-quality professional headshot of an athletic young woman with her hair pulled back, wearing a simple dark athletic top. The lighting is bright and clean, typical of a modern tech or fitness startup aesthetic. The background is a soft, out-of-focus light gray. The mood is confident, approachable, and energetic, fitting a high-performance lifestyle brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuF_8i0MYiBMPfKaAqaa2oLgEFpkLj_tHeu1oD3e_c29o5Dss2EcGk88o8oGRbFCfS95PpXjvyO3o2QHfbty_fik88MKqU2PJ7An7F4BJdnRHb3I9igh3yudnSib6eIWmZrLb42i9OCpn-Q3qfPnkhDXCpY6nh9p0bOMdQmwMYaB7plkZpZau3yPgRRlq5DfuMVSAVkcBmvctysGQwpgg34FFflQ-nx72yh9PzA1Cyb6RrN3pnUKs8kwW_O34ryCF3e1Dlnwn9J7Q"/>
+</div>
+<h1 class="font-display-lg text-headline-md font-bold text-primary dark:text-primary-fixed-dim">VitalityFlow</h1>
+<button class="flex items-center justify-center w-10 h-10 text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto w-full flex flex-col gap-lg mt-md">
+<!-- Header Section -->
+<section class="flex flex-col gap-xs">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background">Training Programs</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select a track to begin your revitalization.</p>
+</section>
+<!-- Programs List (Vertical Cards) -->
+<section class="flex flex-col gap-md">
+<!-- Card 1: Strength Training -->
+<article class="relative w-full rounded-xl overflow-hidden shadow-sm h-64 bg-surface-container-lowest group flex flex-col justify-end p-md isolate">
+<!-- Background Image -->
+<div class="absolute inset-0 z-[-2] bg-cover bg-center" data-alt="A pristine, modern gym setting focusing tightly on a heavy, textured metallic barbell loaded with matte black weight plates. The environment is illuminated by cool, crisp studio lighting that creates sharp highlights on the knurling of the bar. The background is slightly out of focus, suggesting a spacious, high-end training facility. The overall visual tone is authoritative, highly disciplined, and perfectly aligns with a sleek, tech-forward athletic brand aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6eaiYpvzstUyCO0Y1BTmEEJYudxPYvHZoFH4JHHDgFND5KI_tqj8NgI66D-x86-IfhXT1L5QVQ4DrmSGUr2ya7PxPOJ7Wc0RETTnhkcjQ26rsjap98VqBV2lx5qqpxmEYVze7TgO9IF3rgDli952USFTHo3CA_jxn1UvKMgy1hoEk-5s8-9xD_Zt8WxoLQ1JxVGA46iiW_lWF7h1y2Sb80N8TX6Wa1oQLcFN0P-B80Z_BM3uDInCTS5TEq7dJBm8H_qxvCS1l8vY')"></div>
+<!-- Deep Navy Overlay for contrast -->
+<div class="absolute inset-0 z-[-1] bg-on-tertiary-fixed/70 mix-blend-multiply"></div>
+<!-- Gradient for bottom text readability -->
+<div class="absolute inset-0 z-[-1] bg-gradient-to-t from-on-primary-fixed to-transparent opacity-90"></div>
+<div class="flex flex-col gap-xs mb-sm">
+<span class="inline-flex w-fit items-center px-2 py-1 rounded-sm bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-xs">8 Weeks</span>
+<h3 class="font-headline-md text-headline-md text-on-primary font-bold tracking-tight">Strength Training</h3>
+<p class="font-body-md text-body-md text-primary-fixed-dim line-clamp-2">Progressive overload protocols designed to build dense muscle and raw power.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-lg text-label-lg px-lg py-sm rounded-full w-fit hover:bg-primary/90 transition-colors shadow-sm active:scale-95 flex items-center gap-2">
+                    Start Protocol
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- Card 2: Yoga Flow -->
+<article class="relative w-full rounded-xl overflow-hidden shadow-sm h-64 bg-surface-container-lowest group flex flex-col justify-end p-md isolate">
+<!-- Background Image -->
+<div class="absolute inset-0 z-[-2] bg-cover bg-center" data-alt="A minimalist, airy yoga studio bathed in soft, diffused natural light pouring through large off-camera windows. In sharp focus are premium, textured yoga blocks and a rolled-up slate gray mat resting on a pristine light oak floor. The space is uncluttered, emphasizing mathematical precision and clean lines. The mood is highly revitalizing, calm, and sophisticated, reflecting a modern corporate wellness aesthetic utilizing expansive white space." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKqVox6Foub2frA9eP59N1mzmI3plQLaR3PoeKMTxsuvkGAXvPs9YLwWx_Y71d2p34OFf-XlAs313ZyAT9VBDJ5ao6OfOfJtj2HGtUl7Bgs_techriUjrJdR_q4P1aHJF-0J77ZVKomBdC2Wfrc6G-tfJ7VyQC-S1_J0PjtBp5cVj7FwV3xrA0VS9guFsOffxRFFlkBRAmaYlQrk9xnzlVMopBbqGl7khdRYJk1_FK1IQ2GA2_I50zqED1KTxqqEBWvAWljWoEZW0')"></div>
+<!-- Deep Navy Overlay for contrast -->
+<div class="absolute inset-0 z-[-1] bg-on-tertiary-fixed/60 mix-blend-multiply"></div>
+<!-- Gradient for bottom text readability -->
+<div class="absolute inset-0 z-[-1] bg-gradient-to-t from-on-primary-fixed to-transparent opacity-90"></div>
+<div class="flex flex-col gap-xs mb-sm">
+<span class="inline-flex w-fit items-center px-2 py-1 rounded-sm bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-xs">Recovery</span>
+<h3 class="font-headline-md text-headline-md text-on-primary font-bold tracking-tight">Yoga Flow</h3>
+<p class="font-body-md text-body-md text-primary-fixed-dim line-clamp-2">Dynamic mobility and breathwork to accelerate recovery and restore structural balance.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-lg text-label-lg px-lg py-sm rounded-full w-fit hover:bg-primary/90 transition-colors shadow-sm active:scale-95 flex items-center gap-2">
+                    Start Protocol
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+<!-- Card 3: HIIT Cardio -->
+<article class="relative w-full rounded-xl overflow-hidden shadow-sm h-64 bg-surface-container-lowest group flex flex-col justify-end p-md isolate">
+<!-- Background Image -->
+<div class="absolute inset-0 z-[-2] bg-cover bg-center" data-alt="A pair of sleek, matte black athletic shoes resting firmly on a sleek, dark rubber gym floor, positioned next to a heavy cast-iron kettlebell. The lighting is dramatic and directional, creating strong, high-contrast shadows that convey intense energy and motion. The color palette relies heavily on deep blacks and cool tones, punctuated by the sharp definition of the equipment. The aesthetic is raw, high-performance, and designed for an energetic, tech-forward user." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmHmyBo-gd6BE7VO16Q8KS92DIs1JvzFeCGtZ7JBb6XakST-CZ_7bp0oR8C3SmikQSQZeyY3_YL8Gfs8sZB1fHBLdK8I5z4fA0uVohWSIhQ_k_DBO0pinJYi7uO4s4OlFGwfBlxEiFZHPxsgzGDQj-knaOhtjMSTVKAdTccXt_5zZD2Dv1M49V7KLoS1FXzd8-8n1h-rEIDmte3ZaTBuB4pkLAyn09xAS-V-MuI_lk096VnH5vwvy9dCla3vJDsQHsxfKr6cqyXUs')"></div>
+<!-- Deep Navy Overlay for contrast -->
+<div class="absolute inset-0 z-[-1] bg-on-tertiary-fixed/70 mix-blend-multiply"></div>
+<!-- Gradient for bottom text readability -->
+<div class="absolute inset-0 z-[-1] bg-gradient-to-t from-on-primary-fixed to-transparent opacity-90"></div>
+<div class="flex flex-col gap-xs mb-sm">
+<span class="inline-flex w-fit items-center px-2 py-1 rounded-sm bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-xs">High Intensity</span>
+<h3 class="font-headline-md text-headline-md text-on-primary font-bold tracking-tight">HIIT Cardio</h3>
+<p class="font-body-md text-body-md text-primary-fixed-dim line-clamp-2">Maximum effort metabolic conditioning to elevate heart rate and optimize endurance.</p>
+</div>
+<button class="bg-primary text-on-primary font-label-lg text-label-lg px-lg py-sm rounded-full w-fit hover:bg-primary/90 transition-colors shadow-sm active:scale-95 flex items-center gap-2">
+                    Start Protocol
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</article>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-safe px-gutter bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-lg shadow-[0_-4px_15px_rgba(18,74,240,0.04)] rounded-t-xl h-[80px]">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Programs (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+<span class="font-label-md text-label-md font-bold">Programs</span>
+</a>
+<!-- Train (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">timer</span>
+<span class="font-label-md text-label-md">Train</span>
+</a>
+<!-- Stats (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">insights</span>
+<span class="font-label-md text-label-md">Stats</span>
+</a>
+<!-- Profile (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<!-- Safe area padding for bottom nav on mobile devices without home button -->
+<div class="h-safe-bottom bg-surface/90 dark:bg-inverse-surface/90 fixed bottom-0 w-full z-40"></div>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .h-safe-bottom { height: env(safe-area-inset-bottom); }
+    </style>
+</body></html>

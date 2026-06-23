@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Antigravity Engine — AI-powered fitness programme generator with a weightless, cobalt-blue interface." />
+    <title>Antigravity Fitness Engine</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+    <!-- ─── Floating particles background ─── -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- ─── Hero / Header ─── -->
+    <header class="hero" id="hero">
+        <div class="hero__badge">🚀 ANTIGRAVITY ENGINE</div>
+        <h1 class="hero__title">
+            Antrenmanların Artık,<br /><span class="gradient-text">Yerçekimsiz.</span>
+        </h1>
+        <p class="hero__subtitle">
+            Kişiselleştirilmiş programınız milisaniyeler içinde hazır.
+            <br />Asenkron Python gücüyle&nbsp;•&nbsp;Göz alıcı tasarım.
+        </p>
+        <button class="btn btn--primary btn--lg pulse-glow" id="ctaBtn" onclick="scrollToForm()">
+            Planımı Oluştur
+        </button>
+        <!-- Easter-egg trigger -->
+        <button class="btn btn--ghost btn--sm" id="easterEggBtn" onclick="triggerAntigravity()" title="import antigravity">
+            <span class="code-text">import antigravity</span>
+        </button>
+    </header>
+
+    <!-- ─── Form Section ─── -->
+    <section class="section" id="formSection">
+        <div class="container">
+            <h2 class="section__title">Profilini Oluştur</h2>
+            <p class="section__desc">Bize kendinden bahset, sana en uygun programı hazırlayalım.</p>
+
+            <form class="profile-form glass-card" id="profileForm" onsubmit="handleSubmit(event)">
+                <div class="form-grid">
+                    <!-- Age -->
+                    <div class="form-group">
+                        <label for="age">Yaş</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🎂</span>
+                            <input type="number" id="age" name="age" min="14" max="80" value="25" required />
+                        </div>
+                        <span class="form-hint">14 – 80 yaş</span>
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="form-group">
+                        <label for="weight">Kilo (kg)</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">⚖️</span>
+                            <input type="number" id="weight" name="weight" min="30" max="250" step="0.5" value="75" required />
+                        </div>
+                        <span class="form-hint">30 – 250 kg</span>
+                    </div>
+
+                    <!-- Fitness Level -->
+                    <div class="form-group">
+                        <label for="fitnessLevel">Spor Seviyesi</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">📊</span>
+                            <select id="fitnessLevel" name="fitness_level" required>
+                                <option value="Beginner">🌱 Başlangıç</option>
+                                <option value="Intermediate" selected>⚡ Orta</option>
+                                <option value="Advanced">🔥 İleri</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Goal -->
+                    <div class="form-group">
+                        <label for="goal">Hedef</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🎯</span>
+                            <select id="goal" name="goal" required>
+                                <option value="Muscle Gain">💪 Kas Gelişimi</option>
+                                <option value="Weight Loss">🔥 Kilo Verme</option>
+                                <option value="Endurance">🏃 Dayanıklılık</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--lg btn--full" id="submitBtn">
+                    <span class="btn__text">Program Oluştur</span>
+                    <span class="btn__loader" id="btnLoader"></span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ─── Results Section ─── -->
+    <section class="section section--results hidden" id="resultsSection">
+        <div class="container">
+            <!-- Plan Header -->
+            <div class="plan-header glass-card" id="planHeader">
+                <!-- filled by JS -->
+            </div>
+
+            <!-- Days -->
+            <div class="days-grid" id="daysGrid">
+                <!-- filled by JS -->
+            </div>
+
+            <!-- Tips -->
+            <div class="tips-card glass-card" id="tipsCard">
+                <!-- filled by JS -->
+            </div>
+
+            <!-- Regenerate -->
+            <div class="center-actions">
+                <button class="btn btn--primary btn--lg pulse-glow" onclick="scrollToForm()">
+                    🔄 Yeniden Oluştur
+                </button>
+                <button class="btn btn--outline btn--lg" onclick="exportJSON()">
+                    📋 JSON İndir
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer class="footer">
+        <p>Antigravity Engine v1.0 &nbsp;•&nbsp; 🤍 ve asenkron Python ile geliştirildi</p>
+        <p class="footer__easter">
+            <code>import antigravity</code> — çünkü yerçekimi isteğe bağlıdır.
+        </p>
+    </footer>
+
+    <!-- ─── Video Modal ─── -->
+    <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+        <div class="video-modal__card glass-card">
+            <div class="video-modal__header">
+                <h3 class="video-modal__title" id="videoModalTitle">Nasıl Yapılır</h3>
+                <button class="video-modal__close" onclick="closeVideoModal()" aria-label="Kapat">✕</button>
+            </div>
+            <div class="video-modal__body">
+                <iframe
+                    id="videoIframe"
+                    class="video-modal__iframe"
+                    src=""
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Toast ─── -->
+    <div class="toast hidden" id="toast"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

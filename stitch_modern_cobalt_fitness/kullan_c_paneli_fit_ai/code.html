@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VitalityFlow - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#124af0",
+                        "on-tertiary-container": "#ebf1ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#004784",
+                        "secondary-fixed": "#d7e2ff",
+                        "on-secondary-fixed-variant": "#394761",
+                        "inverse-primary": "#b8c3ff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#0d569a",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#434656",
+                        "on-surface": "#191c1e",
+                        "on-background": "#191c1e",
+                        "tertiary-container": "#346fb4",
+                        "primary": "#0040e0",
+                        "on-primary-fixed-variant": "#0035be",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#53617d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c5d9",
+                        "secondary-container": "#cfddfd",
+                        "background": "#f7f9fb",
+                        "on-primary-container": "#efefff",
+                        "secondary": "#515f7a",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001356",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b9c7e6",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#0d1b33",
+                        "outline": "#747688",
+                        "tertiary-fixed": "#d4e3ff",
+                        "tertiary-fixed-dim": "#a4c8ff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#001c39",
+                        "primary-container": "#2e5bff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "2xl": "48px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "lg": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Lexend"],
+                        "headline-lg": ["Lexend"],
+                        "headline-md": ["Lexend"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Shadow for Level 1 Cards */
+        .shadow-level-1 {
+            box-shadow: 0px 4px 15px rgba(0, 64, 224, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16 pb-[88px] md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm bg-surface dark:bg-surface-dim">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-7xl mx-auto">
+<!-- Leading Avatar -->
+<button class="w-10 h-10 rounded-full overflow-hidden hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a vibrant, athletic young woman smiling confidently. Bright, even lighting highlights her features, suggesting a fresh, energetic morning before a workout. The background is a clean, softly out-of-focus light gray, emphasizing her face. The overall aesthetic perfectly matches a bright, modern, airy high-performance fitness app in light mode." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5hu15peHldw-ezyfcNyD6lE3EdjdhGAnkbzoMQJ6Kw8iCw_QIwtg2srGI0MMg5NekRbB6QHEGWq1-GvG8q7XtqTBi_4X0pG7Uy48vb-OpXy-6w3Xl_1qJegeLmvuCKQq_KYf1cVPQDZKCfT4ks8OVBnH1yjqbSBk5yA21QD_11uiacL7EoIkYLmE0V7QIPXo3YirnhgAJ2hVYgewVnmwgb0qnnZwovpplwxZHAkevv9-mUcGeGiVh7m8zwXcBPYAY7WOCM5Q5UnM"/>
+</button>
+<!-- Headline -->
+<h1 class="font-display-lg text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Fit AI</h1>
+<!-- Trailing Icon -->
+<button class="p-2 rounded-full text-primary dark:text-primary-fixed-dim hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg">
+<!-- Welcome Section -->
+<section class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Günaydın, Alex</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Bugün hedeflerine ulaşmak için doğru yoldasın.</p>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md md:gap-lg">
+<!-- Primary Activity Ring (Hero Card) -->
+<div class="col-span-1 md:col-span-8 bg-surface-container-lowest rounded-[24px] p-lg shadow-level-1 flex flex-col md:flex-row items-center gap-xl relative overflow-hidden">
+<!-- Decorative background blob -->
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary-fixed rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+<div class="relative w-48 h-48 flex-shrink-0 flex items-center justify-center">
+<!-- SVG Circular Progress Rings -->
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 120 120">
+<!-- Background Track -->
+<circle class="stroke-primary-fixed" cx="60" cy="60" fill="none" r="50" stroke-width="12"></circle>
+<!-- Progress Track -->
+<circle class="stroke-primary" cx="60" cy="60" fill="none" r="50" stroke-dasharray="314" stroke-dashoffset="78" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[32px] text-primary mb-1 fill">local_fire_department</span>
+<div class="font-headline-lg text-headline-lg text-on-surface leading-none">75%</div>
+<div class="font-label-md text-label-md text-on-surface-variant mt-1 uppercase">Daily Goal</div>
+</div>
+</div>
+<div class="flex-grow flex flex-col justify-center space-y-md w-full z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface">Aktivite Özeti</h3>
+<!-- Sub-metrics -->
+<div class="space-y-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-primary-container">directions_run</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">Adım</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant"><strong class="text-on-surface">8,432</strong> / 10k</span>
+</div>
+<!-- Progress bar small -->
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[84%]"></div>
+</div>
+<div class="flex items-center justify-between pt-sm">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-secondary-container">bolt</span>
+</div>
+<span class="font-label-lg text-label-lg text-on-surface">Aktif Dakika</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant"><strong class="text-on-surface">45</strong> / 60</span>
+</div>
+<!-- Progress bar small -->
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[75%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sleep & Recovery Card -->
+<div class="col-span-1 md:col-span-4 bg-surface-container-lowest rounded-[24px] p-lg shadow-level-1 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Toparlanma</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Uyku kalitesi</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] text-on-tertiary-container fill">bedtime</span>
+</div>
+</div>
+<div class="mb-md">
+<div class="font-display-lg text-display-lg text-on-surface">7h 12m</div>
+<div class="flex items-center gap-xs mt-1">
+<span class="font-label-md text-label-md bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-1 rounded-full uppercase">İDEAL</span>
+</div>
+</div>
+<!-- Mini Chart Placeholder -->
+<div class="h-24 w-full flex items-end gap-1 px-1">
+<div class="w-full bg-surface-variant rounded-t-sm h-[30%]"></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[50%]"></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[80%]"></div>
+<div class="w-full bg-tertiary rounded-t-sm h-[70%]"></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[60%]"></div>
+<div class="w-full bg-surface-variant rounded-t-sm h-[90%]"></div>
+</div>
+</div>
+<!-- Today's Workout Quick Start -->
+<div class="col-span-1 md:col-span-6 bg-surface-container-lowest rounded-[24px] p-0 shadow-level-1 overflow-hidden flex flex-col md:flex-row relative group cursor-pointer hover:shadow-lg transition-shadow duration-300">
+<div class="w-full md:w-2/5 h-48 md:h-auto relative">
+<img alt="Workout" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-quality, bright photograph showing hands tying the laces of a modern, sleek white running shoe. The setting suggests an indoor bright gym environment with soft, diffused daylight pouring in from out of frame. The mood is anticipatory and motivating, perfectly aligning with a fresh, airy, clinical fitness brand aesthetic. Colors are predominantly soft whites and greys with tiny hints of bright blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUXPIQQvAXwB02LFmzDXWvacainBxnM9FRXggYkzA2NrY7uTYrIUNzmBVFnjZp0NaUeZREQka4ZzhduzZsvaXLNRdO8iDKEvwnj07yZYIuZ6ld4aJBSEUdlM4nZoy18XxzvT-MWAl2uXGmOrUW3NylFtHqFtpA7v0ftf_zMS8hOjgVVJWGI2GsjQRuUHyN-uVstWjM-DLXS0fu4vcailPfsZnls-Uqi-F-uk0m3yMJx84yjhOWuKzljeroITEWm7qm2yJP3oJQXs0"/>
+<div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="font-label-md text-label-md bg-white/90 text-on-surface px-2 py-1 rounded-full uppercase backdrop-blur-sm">HIIT</span>
+<span class="font-label-md text-label-md bg-white/90 text-on-surface px-2 py-1 rounded-full uppercase backdrop-blur-sm">45 Min</span>
+</div>
+</div>
+<div class="p-lg flex-grow flex flex-col justify-center">
+<p class="font-label-lg text-label-lg text-primary mb-xs">Sıradaki</p>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Aktivite Özeti</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">High-intensity interval training focusing on lower body power.</p>
+<button class="self-start font-label-lg text-label-lg bg-primary text-on-primary px-6 py-3 rounded-full hover:bg-primary/90 transition-colors shadow-sm active:scale-95 duration-200">Antrenmana Başla</button>
+</div>
+</div>
+<!-- Hydration Card -->
+<div class="col-span-1 md:col-span-6 bg-surface-container-lowest rounded-[24px] p-lg shadow-level-1 flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Su Tüketimi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Su içmeye devam et</p>
+<div class="font-display-lg text-display-lg text-primary">1.2L <span class="font-headline-md text-headline-md text-on-surface-variant">/ 2.5L</span></div>
+</div>
+<div class="relative w-24 h-24">
+<!-- Water drop icon container -->
+<div class="absolute inset-0 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[48px] text-primary fill">water_drop</span>
+</div>
+<!-- Decorative progress background -->
+<svg class="w-full h-full -rotate-90 transform absolute inset-0" viewbox="0 0 100 100">
+<circle class="stroke-primary-fixed" cx="50" cy="50" fill="none" r="45" stroke-width="8"></circle>
+<circle class="stroke-primary" cx="50" cy="50" fill="none" r="45" stroke-dasharray="282" stroke-dashoffset="141" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-safe px-gutter bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-lg rounded-t-xl shadow-[0_-4px_15px_rgba(18,74,240,0.04)] bg-surface dark:bg-inverse-surface">
+<!-- Active Tab: Home -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[24px] mb-1 fill">dashboard</span>
+<span class="font-label-md text-label-md">Ana Sayfa</span>
+</button>
+<!-- Inactive Tab: Programs -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[24px] mb-1">fitness_center</span>
+<span class="font-label-md text-label-md">Programlar</span>
+</button>
+<!-- Inactive Tab: Train -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[24px] mb-1">timer</span>
+<span class="font-label-md text-label-md">Antrenman</span>
+</button>
+<!-- Inactive Tab: Stats -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[24px] mb-1">insights</span>
+<span class="font-label-md text-label-md">İstatistikler</span>
+</button>
+<!-- Inactive Tab: Profile -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined text-[24px] mb-1">person</span>
+<span class="font-label-md text-label-md">Profil</span>
+</button>
+</nav>
+<!-- Desktop SideNav (Visible only on md and up, replacing BottomNav functionally in layout logic, though not requested as a separate component in JSON, providing consistent desktop experience) -->
+<!-- Note: Instruction says "responsive pivot: on WEB hide BottomNavBar and use full nav cluster in TopAppBar". I will append nav links to TopAppBar for desktop. -->
+<style>
+        @media (min-width: 768px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+        @media (max-width: 767px) {
+            .desktop-nav {
+                display: none;
+            }
+        }
+    </style>
+<!-- Injecting desktop nav links into header via absolutely positioned block for layout simplicity without changing TopAppBar JSON structure directly -->
+<div class="fixed top-0 left-1/2 -translate-x-1/2 h-16 z-[60] desktop-nav items-center gap-lg hidden pointer-events-none">
+<div class="flex gap-lg pointer-events-auto">
+<a class="font-label-lg text-label-lg text-primary font-bold border-b-2 border-primary pb-1" href="#">Ana Sayfa</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">Programlar</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">Antrenman</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors pb-1" href="#">İstatistikler</a>
+</div>
+</div>
+</body></html>

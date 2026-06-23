@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VitalityFlow - Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Lexend:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#124af0",
+                        "on-tertiary-container": "#ebf1ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#004784",
+                        "secondary-fixed": "#d7e2ff",
+                        "on-secondary-fixed-variant": "#394761",
+                        "inverse-primary": "#b8c3ff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#0d569a",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "on-surface-variant": "#434656",
+                        "on-surface": "#191c1e",
+                        "on-background": "#191c1e",
+                        "tertiary-container": "#346fb4",
+                        "primary": "#0040e0",
+                        "on-primary-fixed-variant": "#0035be",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#53617d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c4c5d9",
+                        "secondary-container": "#cfddfd",
+                        "background": "#f7f9fb",
+                        "on-primary-container": "#efefff",
+                        "secondary": "#515f7a",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001356",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#b9c7e6",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#0d1b33",
+                        "outline": "#747688",
+                        "tertiary-fixed": "#d4e3ff",
+                        "tertiary-fixed-dim": "#a4c8ff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#001c39",
+                        "primary-container": "#2e5bff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "2xl": "48px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "md": "16px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "lg": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Lexend"],
+                        "headline-lg": ["Lexend"],
+                        "headline-md": ["Lexend"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .shadow-soft {
+            box-shadow: 0 4px 15px rgba(18, 74, 240, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-sm">
+<img alt="User Profile" class="w-8 h-8 rounded-full object-cover active:scale-95 duration-200 cursor-pointer" data-alt="A close-up, high-quality profile portrait of a confident, athletic young woman looking slightly off-camera. The lighting is soft and natural, emphasizing a healthy, vibrant appearance. The background is a clean, out-of-focus light gray that perfectly complements a modern, airy light-mode interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTtFGg4YMKhIx0xI3z-KaI30BtsJ4K6IUf5VqMJwdjeQBSjclbCLgfW7SNirJCwtKAMPEFBjmpo5rbgBlFcWvPPwwIejOsPJPFyqCIDJhDrU0FeK1wG6mnV3K9KKUSHbBS7KR5KkEJUfsvczzU47cpZq2x4VFDCT0sr3rFQq1wBH8_uxaJsoUdW3830u_wUsiNGQexDgBcRK3HtC0aiHY6KcDQ1acQ1aAqImkj4yTc7qqsnuZk9v1x-r4PKAXojl-xsJC_nqFl35M"/>
+</div>
+<div class="font-display-lg text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Fit AI</div>
+<div class="flex items-center">
+<button class="text-on-surface-variant font-medium hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200 p-2 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop w-full max-w-7xl mx-auto flex flex-col gap-xl">
+<!-- Header -->
+<section class="flex flex-col md:flex-row md:justify-between md:items-end gap-sm">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Haftalık Özet</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">24 Ekim - 31 Ekim</p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-2 rounded-full bg-surface-container-low text-on-surface border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span class="font-label-lg text-label-lg">Bu Hafta</span>
+</button>
+</div>
+</section>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Hero Chart: Weight Loss Trend -->
+<div class="col-span-1 md:col-span-8 bg-surface-container-lowest rounded-xl shadow-soft p-lg flex flex-col gap-lg border border-surface-variant/50">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-label-lg text-label-lg text-secondary uppercase tracking-wider">KİLO KAYBI TRENDİ</h2>
+<div class="flex items-baseline gap-sm mt-xs">
+<span class="font-display-lg text-display-lg text-on-surface">158.4</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">lbs</span>
+</div>
+<p class="font-label-md text-label-md text-tertiary mt-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+                            -2.1 lbs this week
+                        </p>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="w-full h-[200px] mt-auto relative">
+<!-- Minimalist SVG Line Chart -->
+<svg class="w-full h-full overflow-visible preserve-aspect-ratio=" none"="" viewbox="0 0 500 150">
+<defs>
+<lineargradient id="lineGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0040e0" stop-opacity="0.15"></stop>
+<stop offset="100%" stop-color="#0040e0" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#eceef0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="500" y1="30" y2="30"></line>
+<line stroke="#eceef0" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="500" y1="90" y2="90"></line>
+<!-- Area -->
+<path d="M 0 120 C 100 110, 150 130, 250 80 C 350 30, 400 60, 500 20 L 500 150 L 0 150 Z" fill="url(#lineGradient)"></path>
+<!-- Line -->
+<path d="M 0 120 C 100 110, 150 130, 250 80 C 350 30, 400 60, 500 20" fill="none" stroke="#0040e0" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<!-- Data Points -->
+<circle cx="250" cy="80" fill="#ffffff" r="5" stroke="#0040e0" stroke-width="3"></circle>
+<circle cx="500" cy="20" fill="#0040e0" r="6"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="absolute -bottom-6 left-0 w-full flex justify-between font-label-md text-label-md text-outline px-2">
+<span>Mon</span>
+<span>Wed</span>
+<span>Fri</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Secondary Chart: Workout Duration -->
+<div class="col-span-1 md:col-span-4 bg-surface-container-lowest rounded-xl shadow-soft p-lg flex flex-col gap-lg border border-surface-variant/50">
+<div>
+<h2 class="font-label-lg text-label-lg text-secondary uppercase tracking-wider">GÜNLÜK SÜRE</h2>
+<div class="flex items-baseline gap-sm mt-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface">45</span>
+<span class="font-body-md text-body-md text-on-surface-variant">min avg</span>
+</div>
+</div>
+<div class="flex-grow flex items-end justify-between gap-2 h-[150px] mt-auto pt-8">
+<!-- Bar Chart Items -->
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-full bg-secondary-fixed rounded-t-sm group-hover:bg-primary-fixed transition-colors h-[40%]"></div>
+<span class="font-label-md text-label-md text-outline">M</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-full bg-secondary-fixed rounded-t-sm group-hover:bg-primary-fixed transition-colors h-[60%]"></div>
+<span class="font-label-md text-label-md text-outline">T</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-full bg-secondary-fixed rounded-t-sm group-hover:bg-primary-fixed transition-colors h-[30%]"></div>
+<span class="font-label-md text-label-md text-outline">W</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-full bg-secondary-fixed rounded-t-sm group-hover:bg-primary-fixed transition-colors h-[80%]"></div>
+<span class="font-label-md text-label-md text-outline">T</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer relative">
+<!-- Active Day Tooltip -->
+<div class="absolute -top-8 bg-inverse-surface text-inverse-on-surface font-label-md text-label-md py-1 px-2 rounded whitespace-nowrap">65 min</div>
+<div class="w-full bg-primary rounded-t-sm shadow-[0_0_10px_rgba(0,64,224,0.3)] h-[100%]"></div>
+<span class="font-label-md text-label-md text-primary font-bold">F</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-full bg-secondary-fixed rounded-t-sm group-hover:bg-primary-fixed transition-colors h-[20%]"></div>
+<span class="font-label-md text-label-md text-outline">S</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group cursor-pointer">
+<div class="w-full bg-secondary-fixed rounded-t-sm group-hover:bg-primary-fixed transition-colors h-[50%]"></div>
+<span class="font-label-md text-label-md text-outline">S</span>
+</div>
+</div>
+</div>
+<!-- Achievements & Quick Stats Row -->
+<div class="col-span-1 md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Badge Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-soft p-md flex items-center gap-md border border-surface-variant/50 hover:border-primary-container transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">5 Günlük Seri</h3>
+<p class="font-label-md text-label-md text-on-surface-variant mt-xs">You're on fire! Keep it up.</p>
+</div>
+</div>
+<!-- Quick Stat: Calories -->
+<div class="bg-surface-container-lowest rounded-xl shadow-soft p-md flex flex-col justify-center border border-surface-variant/50">
+<div class="flex items-center justify-between mb-sm">
+<span class="material-symbols-outlined text-secondary">local_dining</span>
+<span class="font-label-md text-label-md text-tertiary bg-tertiary-fixed px-2 py-0.5 rounded-full">+12% vs last week</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface">14,250 <span class="font-body-md text-body-md text-on-surface-variant">kcal</span></div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wide mt-xs">TOPLAM YAKILAN</div>
+</div>
+<!-- Quick Stat: Workouts -->
+<div class="bg-surface-container-lowest rounded-xl shadow-soft p-md flex flex-col justify-center border border-surface-variant/50">
+<div class="flex items-center justify-between mb-sm">
+<span class="material-symbols-outlined text-secondary">fitness_center</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Goal: 6</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-md text-headline-md text-on-surface">5</span>
+<span class="font-body-md text-body-md text-on-surface-variant">antrenman</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container mt-sm rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 83%"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-safe px-gutter bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-lg shadow-[0_-4px_15px_rgba(18,74,240,0.04)] rounded-t-xl md:hidden">
+<!-- Inactive: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-label-md text-label-md">Ana Sayfa</span>
+</a>
+<!-- Inactive: Programs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1">fitness_center</span>
+<span class="font-label-md text-label-md">Programlar</span>
+</a>
+<!-- Inactive: Train -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1">timer</span>
+<span class="font-label-md text-label-md">Antrenman</span>
+</a>
+<!-- Active: Stats (Analytics maps to Stats) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-label-md text-label-md font-bold">İstatistikler</span>
+</a>
+<!-- Inactive: Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-md text-label-md">Profil</span>
+</a>
+</nav>
+<!-- Desktop Navigation (Hidden on Mobile, simulating the SideNav/TopNav combo usually found in desktop responsive states based on guidelines, but adhering to the provided TopAppBar for now) -->
+<style>
+        /* Safe area padding for modern mobile browsers */
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 16px); }
+    </style>
+</body></html>
