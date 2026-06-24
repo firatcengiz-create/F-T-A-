@@ -11,7 +11,7 @@ Run:
     uvicorn backend.main:app --reload --port 8000
 """
 
-from __future__ import annotations
+
 
 # import antigravity  # noqa  ← 🥚 Python's real easter egg!
 #                      # We honour it with our own floating animation instead.
@@ -20,28 +20,40 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 from backend.generator import generate_workout_plan
 from backend.models import AntigravityEasterEgg, UserProfile, WorkoutPlan
 
 # ─────────────────── App setup ───────────────────────────────
 
+limiter = Limiter(key_func=get_remote_address)
+
 app = FastAPI(
     title="Antigravity Fitness Engine",
     version="1.0.0",
     description="Weightless workout generation — powered by async Python.",
 )
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+allowed_origins_str = os.environ.get("ALLOWED_ORIGINS", "http://localhost:8000,http://127.0.0.1:8000")
+allowed_origins = [o.strip() for o in allowed_origins_str.split(",") if o.strip()]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -62,7 +74,8 @@ async def serve_frontend():
 
 
 @app.post("/api/generate", response_model=WorkoutPlan)
-async def generate(profile: UserProfile) -> WorkoutPlan:
+@limiter.limit("5/minute")
+async def generate(request: Request, profile: UserProfile) -> WorkoutPlan:
     """
     Generate a personalised workout plan.
 

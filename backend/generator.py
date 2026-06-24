@@ -27,6 +27,8 @@ import os
 import random
 from typing import List
 
+from pydantic import ValidationError
+
 from google import genai
 
 from backend.exercise_db import EXERCISE_DATABASE
@@ -232,29 +234,25 @@ async def _select_exercises(
 # ───────────────── Public API ────────────────────────────────
 
 async def _generate_workout_plan_ai(profile: UserProfile, api_key: str) -> WorkoutPlan:
-    """Uses Gemini to generate the structured workout plan."""
-    def _call_gemini():
-        client = genai.Client(api_key=api_key)
-        prompt = (
-            f"Act as a professional fitness coach. "
-            f"Generate a {profile.fitness_level.value} level {profile.goal.value} workout plan "
-            f"for a {profile.age} year old weighing {profile.weight} kg. "
-            f"Be creative but realistic with the exercises and follow the requested schema. "
-            f"IMPORTANT: Generate the entire response (including plan names, descriptions, day focus, and tips) in Turkish, "
-            f"EXCEPT for the 'exercise_name' fields, which MUST remain in English."
-        )
-        response = client.models.generate_content(
-            model='gemini-1.5-flash',
-            contents=prompt,
-            config=genai.types.GenerateContentConfig(
-                response_mime_type="application/json",
-                response_schema=WorkoutPlan,
-            ),
-        )
-        return WorkoutPlan.model_validate_json(response.text)
-
-    # Run the synchronous Gemini client in a thread pool so it doesn't block FastAPI
-    return await asyncio.to_thread(_call_gemini)
+    """Uses Gemini to generate the structured workout plan asynchronously."""
+    client = genai.Client(api_key=api_key)
+    prompt = (
+        f"Act as a professional fitness coach. "
+        f"Generate a {profile.fitness_level.value} level {profile.goal.value} workout plan "
+        f"for a {profile.age} year old weighing {profile.weight} kg. "
+        f"Be creative but realistic with the exercises and follow the requested schema. "
+        f"IMPORTANT: Generate the entire response (including plan names, descriptions, day focus, and tips) in Turkish, "
+        f"EXCEPT for the 'exercise_name' fields, which MUST remain in English."
+    )
+    response = await client.aio.models.generate_content(
+        model='gemini-1.5-flash',
+        contents=prompt,
+        config=genai.types.GenerateContentConfig(
+            response_mime_type="application/json",
+            response_schema=WorkoutPlan,
+        ),
+    )
+    return WorkoutPlan.model_validate_json(response.text)
 
 
 async def generate_workout_plan(profile: UserProfile) -> WorkoutPlan:
@@ -267,6 +265,8 @@ async def generate_workout_plan(profile: UserProfile) -> WorkoutPlan:
     if api_key:
         try:
             return await _generate_workout_plan_ai(profile, api_key)
+        except ValidationError as e:
+            print(f"AI Generation validation failed: {e}. Falling back to rule-based.")
         except Exception as e:
             print(f"AI Generation failed: {e}. Falling back to rule-based.")
 
